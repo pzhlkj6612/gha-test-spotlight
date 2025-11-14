@@ -32,6 +32,9 @@ jobs:
           set -ex
 
           for i in $(seq 0 9999); do
+            ps -ef | grep 'mds'
+            mdutil -s -a
+
             dmg_path="$(mktemp -u).dmg"
             create-dmg \
               --hdiutil-verbose \
