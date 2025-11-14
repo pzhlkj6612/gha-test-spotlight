@@ -9,8 +9,8 @@ jobs:
   build:
     runs-on: macos-15-intel
 
-    continue-on-error: false
     strategy:
+      fail-fast: false
       matrix:
         spotlight: [on, off]
 
