@@ -15,7 +15,10 @@ jobs:
         spotlight: [on, off]
 
     steps:
-      - run: brew install create-dmg
+      - uses: actions/checkout@v5.0.0
+        with:
+          repository: 'pzhlkj6612/forked-create-dmg'
+          ref: 'test'
 
       - name: Spotlight ${{ matrix.spotlight }}
         run: |
@@ -36,7 +39,7 @@ jobs:
             mdutil -s -a
 
             dmg_path="$(mktemp -u).dmg"
-            create-dmg \
+            bash ./create-dmg \
               --hdiutil-verbose \
               --volname "$(basename $(mktemp -u))" \
               --window-size 500 352 \
