@@ -9,13 +9,38 @@ jobs:
   build:
     runs-on: macos-15-intel
 
+    strategy:
+      matrix:
+        spotlight: [on, off]
+
     steps:
-      - name: Run a multi-line script
+      - run: brew install create-dmg
+
+      - name: Spotlight ${{ matrix.spotlight }}
         run: |
           set -ex
 
           mdutil -s -a
 
-          sudo mdutil -i off /
+          sudo mdutil -i '${{ matrix.spotlight }}' -a
 
           mdutil -s -a
+
+      - name: package XCode
+        run: |
+          set -ex
+
+          for i in $(seq 0 9999); do
+            dmg_path="$(mktemp -u)"
+            create-dmg \
+              --hdiutil-verbose \
+              --volname "$(basename $(mktemp -u))" \
+              --window-size 500 352 \
+              --icon-size 100 \
+              --icon "${APP_FILE_NAME}" 90 162 \
+              --hide-extension "${APP_FILE_NAME}" \
+              --app-drop-link 370 162 \
+              "$dmg_path" \
+              '/Applications/Xcode_16.4.app'
+            rm $dmg_path
+          done
