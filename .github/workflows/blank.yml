@@ -26,7 +26,7 @@ jobs:
 
           mdutil -s -a
 
-      - name: package XCode
+      - name: package
         run: |
           set -ex
 
@@ -37,10 +37,8 @@ jobs:
               --volname "$(basename $(mktemp -u))" \
               --window-size 500 352 \
               --icon-size 100 \
-              --icon "${APP_FILE_NAME}" 90 162 \
-              --hide-extension "${APP_FILE_NAME}" \
               --app-drop-link 370 162 \
               "$dmg_path" \
-              '/Applications/Xcode_16.4.app'
+              '/Applications/Firefox.app'
             rm $dmg_path
           done
