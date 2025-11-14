@@ -31,7 +31,7 @@ jobs:
           set -ex
 
           for i in $(seq 0 9999); do
-            dmg_path="$(mktemp -u)"
+            dmg_path="$(mktemp -u).dmg"
             create-dmg \
               --hdiutil-verbose \
               --volname "$(basename $(mktemp -u))" \
