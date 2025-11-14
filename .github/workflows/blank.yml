@@ -12,4 +12,10 @@ jobs:
     steps:
       - name: Run a multi-line script
         run: |
+          set -ex
+
+          mdutil -s -a
+
+          sudo mdutil -i off /
+
           mdutil -s -a
