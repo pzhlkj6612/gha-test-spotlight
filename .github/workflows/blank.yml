@@ -26,6 +26,16 @@ jobs:
 
           mdutil -s -a
 
+          # for "on", you may encounter:
+          #   /:
+          #   Error: unable to perform operation.  (-1)
+          #     Error: unknown indexing state.
+          #   /System/Volumes/Data:
+          #   Error: invalid operation.
+          #     Error: unknown indexing state.
+          #   /System/Volumes/Preboot:
+          #   Error: invalid operation.
+          #     Error: unknown indexing state.
           sudo mdutil -i '${{ matrix.spotlight }}' -a
 
           mdutil -s -a
@@ -42,7 +52,7 @@ jobs:
 
             dmg_path="$(mktemp -u).dmg"
             bash ./create-dmg \
-              --hdiutil-verbose \
+              --hdiutil-quiet \
               --volname "$(basename $(mktemp -u))" \
               --window-size 500 352 \
               --icon-size 100 \
