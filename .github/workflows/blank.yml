@@ -34,7 +34,8 @@ jobs:
         run: |
           set -ex
 
-          for i in $(seq 0 9999); do
+          for i in $(seq 0 99); do
+            echo "========== $i =========="
             ps -ef | grep 'mds'
             mdutil -s -a
 
