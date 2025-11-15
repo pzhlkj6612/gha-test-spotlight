@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v5.0.0
         with:
           repository: 'pzhlkj6612/forked-create-dmg'
-          ref: '8780a17c9ac76954941c6c8a35f0c5c93ba4c1ea'
+          ref: '1bdcc04b5c22ba8c1874e8346fb98b6e1fae0e3c'
 
       - name: Spotlight ${{ matrix.spotlight }}
         run: |
