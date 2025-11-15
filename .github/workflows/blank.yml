@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v5.0.0
         with:
           repository: 'pzhlkj6612/forked-create-dmg'
-          ref: 'a48a1f18fde59fbb60e67db824b15a41aea5ef01'
+          ref: '8bcc737ad519a9b97d099c9e3cf23f2dfeb479e5'
 
       - name: Spotlight ${{ matrix.spotlight }}
         run: |
@@ -44,7 +44,7 @@ jobs:
         run: |
           set -ex
 
-          # 100-time loop needs 1h43m
+          # about 2 hours
           for i in $(seq 0 39); do
             echo "========== $i =========="
 
